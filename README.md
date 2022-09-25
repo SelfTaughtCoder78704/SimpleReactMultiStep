@@ -30,7 +30,7 @@ Example from above continued with a six part quiz with Q4 being an Interstitial:
 }>
 ```
 
-## Notice taht Q4 is not included in the As object.
+## Notice that Q4 is not included in the As object.
 
 - Get your Qs in place:
 
