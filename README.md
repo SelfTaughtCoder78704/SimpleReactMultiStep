@@ -127,4 +127,7 @@ Example from above continued with a six part quiz with Q4 being an Interstitial:
 
 Qs is an array of objects. Each object represents a question. Each question has a qId, question, type, and children. If the question is a multi-select or single-choice, it will also have choices. If the question is an interstitial, it will have a component. As need to have a Q{number} for each key in Qs. Example: Q1, Q2, Q3, Q4, Q5, Q6.
 
+demo:
+https://simple-react-multistep.netlify.app/
+
 - See App.js for a working example.
