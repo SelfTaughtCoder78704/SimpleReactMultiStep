@@ -118,8 +118,8 @@ Example from above continued with a six part quiz with Q4 being an Interstitial:
         },
       ],
     },
-    (onEnd = { logEnd }),
   ]}
+  onEnd={logEnd}
 />
 ```
 
