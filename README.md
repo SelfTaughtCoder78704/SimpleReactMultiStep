@@ -8,8 +8,8 @@
 - SingleChoice Component
 - MultiSelect Component
 
-Quiz needs 2 props:
-As and Qs
+Quiz needs 3 props:
+As and Qs, and onEnd
 
 As looks like this:
 
