@@ -15,8 +15,6 @@ function App() {
         console.log(`${key}: ${answers[key]}`);
       }
     }
-
-
   }
   return (
     <div className="App">

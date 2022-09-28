@@ -121,37 +121,52 @@ Example from above continued with a six part quiz with Q4 being an Interstitial:
     },
     {
       qId: 7,
-      type: 'conditional',
-      qt: 'multi-select',
-      fallBack: (<div>Sorry, you don't like pizza</div>),
-      conditions:
-      {
-        question: 'Q5',
-        value: ['pizza']
+      type: "conditional",
+      qt: "multi-select",
+      fallBack: <div>Sorry, you don't like pizza</div>,
+      conditions: {
+        question: "Q5",
+        value: ["pizza"],
       },
       question: "What is your favorite pizza topping?",
-      children: (<span className="checkmark" />),
+      children: <span className="checkmark" />,
       choices: [
         {
           label: "Pepperoni",
-          value: "pepperoni"
+          value: "pepperoni",
         },
         {
           label: "Mushrooms",
-          value: "mushrooms"
+          value: "mushrooms",
         },
         {
           label: "Olives",
-          value: "olives"
-        }
-      ]
-    }
+          value: "olives",
+        },
+      ],
+    },
   ]}
   onEnd={logEnd}
 />
 ```
 
-## The meat and potatoes is in the onEnd prop that should be a function. This is a function you will create in the Parent scope. It will be passed to the Quiz component as a prop. It will be called when the user clicks the submit button. It will receive the answers object as an argument. You can do whatever you want with it. In this example, we are just logging it to the console.
+## The meat and potatoes is in the onEnd prop that should be a function. It is passed answers. So you can create the function in the outer scope something like this:
+
+```js
+const logEnd = (answers) => {
+  console.log(answers);
+
+  for (let key in answers) {
+    if (Array.isArray(answers[key])) {
+      console.log(`${key}: ${answers[key].join(", ")}`);
+    } else {
+      console.log(`${key}: ${answers[key]}`);
+    }
+  }
+};
+```
+
+## This is a function you will create in the Parent scope. It will be passed to the Quiz component as a prop. It will be called when the user clicks the submit button. It will receive the answers object as an argument. You can do whatever you want with it. In this example, we are just logging it to the console.
 
 Qs is an array of objects. Each object represents a question. Each question has a qId, question, type, and children. If the question is a multi-select or single-choice, it will also have choices. If the question is an interstitial, it will have a component. As need to have a Q{number} for each key in Qs. Example: Q1, Q2, Q3, Q4, Q5, Q6.
 
