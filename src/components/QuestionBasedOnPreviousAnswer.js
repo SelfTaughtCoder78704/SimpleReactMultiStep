@@ -11,11 +11,6 @@ const QuestionBasedOnPreviousAnswer = ({ type, conditions, previousAnswers, chil
 
   console.log("foundAnswer", foundAnswer);
   const checkConditions = (conditions, foundAnswer) => {
-
-    // if (foundAnswer.every(v => conditions.value.includes(v))) {
-    //   return true
-    // }
-    // make sure both arrays are the same length and have the same values
     if (foundAnswer.length === conditions.value.length && foundAnswer.every(v => conditions.value.includes(v))) {
       return true
     }
