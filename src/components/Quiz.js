@@ -59,6 +59,16 @@ export default function Quiz(props) {
     e.preventDefault();
     if (currentStep > 1) {
       setCurrentStep(currentStep - 1);
+      // reset the answer for the current question
+      // make sure to check if is a string or an array
+      // const question = Qs.find((q) => q.qId === currentStep - 1);
+      // if (question.qt === 'multi-select') {
+      //   setAnswers({ ...answers, [`Q${question.qId}`]: [] });
+      // }
+      // if (question.qt === 'single-choice') {
+      //   setAnswers({ ...answers, [`Q${question.qId}`]: '' });
+      // }
+
     }
   }
 
@@ -74,9 +84,9 @@ export default function Quiz(props) {
         {question.type === 'interstitial' && <Interstitial children={question.component} />}
         {question.type === 'single-choice' && <SingleChoice name={`Q${question.qId}`} choices={question.choices} onChange={onChangeSingleChoice} children={question.children ? question.children : null} />}
         {question.type === 'conditional' && <QuestionBasedOnPreviousAnswer fallBack={question.fallBack} type={question.qt} conditions={question.conditions} previousAnswers={answers} handleChange={onSelections} id={`Q${question.qId}`} choices={question.choices} children={question.children} />}
-        <button type="submit">Next</button>
-        <button onClick={onBack}>Back</button>
-        {currentStep === steps && <div>{JSON.stringify(answers)}</div>}
+        {currentStep !== steps && <button type="submit">Next</button>}
+        {/* {currentStep !== steps && <button onClick={onBack}>Back</button>} */}
+        {currentStep === steps && <div className="answerBlock">YOUR ANSWERS: {JSON.stringify(answers)}</div>}
         {currentStep === steps && <button onClick={() => onEnd(answers)}>Submit</button>}
       </form>
     </div>

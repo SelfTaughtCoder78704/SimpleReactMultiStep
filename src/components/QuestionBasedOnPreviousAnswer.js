@@ -14,13 +14,12 @@ const QuestionBasedOnPreviousAnswer = ({ type, conditions, previousAnswers, chil
 
     // check if the answer is an array
     if (Array.isArray(foundAnswer)) {
-      // check if all the values in the array match the conditions
-      return foundAnswer.every((answer) => conditions.value.includes(answer))
+      return foundAnswer.sort().join(',') === conditions.value.sort().join(',')
     }
 
     // check if the answer is a string
     if (typeof foundAnswer === "string") {
-      // check if the answer matches the conditions
+      // checking if the answer matches the conditions
       return conditions.value === foundAnswer
     }
 
@@ -37,9 +36,7 @@ const QuestionBasedOnPreviousAnswer = ({ type, conditions, previousAnswers, chil
   }, [conditions, foundAnswer, type])
 
 
-  // console.log("conditions", conditions);
 
-  // console.log("foundAnswer", foundAnswer);
 
   return (
     <div>

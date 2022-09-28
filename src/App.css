@@ -174,3 +174,8 @@
   border-width: 0 3px 3px 0;
   transform: rotate(45deg);
 }
+
+.answerBlock {
+  width: 200px;
+  margin: 40px auto;
+}
