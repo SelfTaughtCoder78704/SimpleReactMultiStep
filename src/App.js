@@ -20,6 +20,8 @@ function App() {
   }
   return (
     <div className="App">
+
+
       <Quiz
         As={{
           Q1: "",
@@ -27,32 +29,47 @@ function App() {
           Q3: [],
           Q5: '',
           Q6: [],
-          Q7: [],
-          Q8: []
+
         }}
         Qs={[
           {
             qId: 1,
-            question: "What is the capital of France?",
+            question: "What is your name?",
             type: 'text'
           }, {
             qId: 2,
-            question: "What is the capital of Texas?",
+            question: "Enter your email address",
             type: 'text'
           },
           {
             qId: 3,
-            question: "What do you like?",
+            question: "What programming languages do you know?",
             type: 'multi-select',
             children: (<span className="checkmark" />),
             choices: [
               {
-                label: "I like apples",
-                value: "apples"
+                label: "JavaScript",
+                value: "javascript"
               },
               {
-                label: "I like oranges",
-                value: "oranges"
+                label: "Python",
+                value: "python"
+              },
+              {
+                label: "Java",
+                value: "java"
+              },
+              {
+                label: "C++",
+                value: "c++"
+              },
+              {
+                label: "C#",
+                value: "c#"
+              },
+              {
+                label: "Ruby",
+                value: "ruby"
               },
             ]
           },
@@ -63,104 +80,69 @@ function App() {
               <div>
                 <h2>TAKE A BREAK</h2>
                 <p>Enjoy the view:</p>
-                <img src="https://media.giphy.com/media/3o7TKsQ8UQ0MgVJhWU/giphy.gif" alt="take a break" />
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/PkZNo7MFNFg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
               </div>
-
             )
           },
           {
             qId: 5,
             type: 'single-choice',
             children: (<span className="checkmark" />),
-            question: "What is your favorite food?",
+            question: "What is your favorite language?",
             choices: [
               {
-                label: "Spaghetti",
-                value: "spaghetti"
+                label: "JavaScript",
+                value: "javascript"
               },
               {
-                label: "Pizza",
-                value: "pizza"
+                label: "Python",
+                value: "python"
               },
               {
-                label: "Tacos",
-                value: "tacos"
-              }
+                label: "Java",
+                value: "java"
+              },
+              {
+                label: "C++",
+                value: "c++"
+              },
+              {
+                label: "C#",
+                value: "c#"
+              },
+              {
+                label: "Ruby",
+                value: "ruby"
+              },
             ]
           },
+
           {
             qId: 6,
-            type: 'multi-select',
-            question: "Which colors do you like?",
-            children: (<span className="checkmark" />),
-            choices: [
-              {
-                label: "Red",
-                value: "red"
-              },
-              {
-                label: "Blue",
-                value: "blue"
-              },
-              {
-                label: "Green",
-                value: "green"
-              }
-            ]
-          },
-          {
-            qId: 7,
             type: 'conditional',
-            fallBack: (<div>Sorry, you don't like red or blue</div>),
-            conditions:
-            {
-              question: 'Q6',
-              value: ['red', 'blue']
-
-            },
-            qt: 'single-choice',
-            question: "What do you like better, red or blue?",
-            children: (<span className="checkmark" />),
-            choices: [
-              {
-                label: "Red",
-                value: "red"
-              },
-              {
-                label: "Blue",
-                value: "blue"
-              }
-            ]
-
-          },
-
-          {
-            qId: 8,
-            type: 'conditional',
-            qt: 'multi-select',
-            fallBack: (<div>Sorry, you don't like pizza</div>),
+            fallBack: (<div>Whoa JavaScript is Waaaaayyy better!</div>),
             conditions:
             {
               question: 'Q5',
-              value: 'pizza'
+              value: 'javascript'
+
             },
-            question: "What is your favorite pizza topping?",
+            qt: 'single-choice',
+            question: "What do you like better, JavaScript or Python?",
             children: (<span className="checkmark" />),
             choices: [
               {
-                label: "Pepperoni",
-                value: "pepperoni"
+                label: "JavaScript",
+                value: "javascript"
               },
               {
-                label: "Mushrooms",
-                value: "mushrooms"
-              },
-              {
-                label: "Olives",
-                value: "olives"
+                label: "Python",
+                value: "python"
               }
             ]
-          }
+
+          },
+
         ]}
         onEnd={logEnd}
       />
@@ -169,6 +151,8 @@ function App() {
 }
 
 export default App;
+
+
 
 
 

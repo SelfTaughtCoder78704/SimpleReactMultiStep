@@ -5,10 +5,6 @@ import SingleChoice from "./SingleChoice";
 import Interstitial from "./Interstitial";
 import QuestionBasedOnPreviousAnswer from './QuestionBasedOnPreviousAnswer'
 
-// let redColorChoices = [ 'red', 'orange', 'yellow' ]
-// let blueColorChoices = [ 'blue', 'green', 'purple' ]
-// let greenColorChoices = [ 'green', 'yellow', 'orange' ]
-
 
 export default function Quiz(props) {
   const { Qs, As, onEnd } = props
@@ -78,7 +74,7 @@ export default function Quiz(props) {
     <div className="quiz">
       <h1>Quiz</h1>
       <form onSubmit={onSubmit}>
-        <h2>{question.question}</h2>
+        {!question.fallBack && <h2>{question.question}</h2>}
         {question.type === 'text' && <InputField name={`Q${question.qId}`} onChange={onChange} />}
         {question.type === 'multi-select' && <MultiSelect name={`Q${question.qId}`} choices={question.choices} onChange={onSelections} children={question.children ? question.children : null} />}
         {question.type === 'interstitial' && <Interstitial children={question.component} />}
