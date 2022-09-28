@@ -1,10 +1,12 @@
 import Quiz from './components/Quiz';
 import './App.css';
 
+
 function App() {
+
   const logEnd = (answers) => {
     console.log(answers)
-    
+
 
     for (let key in answers) {
       if (Array.isArray(answers[key])) {
@@ -23,8 +25,10 @@ function App() {
           Q1: "",
           Q2: "",
           Q3: [],
-          Q5: "",
+          Q5: [],
           Q6: [],
+          Q7: [],
+          Q8: []
         }}
         Qs={[
           {
@@ -103,6 +107,59 @@ function App() {
                 value: "green"
               }
             ]
+          },
+          {
+            qId: 7,
+            type: 'conditional',
+            fallBack: (<div>Sorry, you don't like red or blue</div>),
+            conditions:
+            {
+              question: 'Q6',
+              value: ['red', 'blue']
+
+            },
+            qt: 'single-choice',
+            question: "What do you like better, red or blue?",
+            children: (<span className="checkmark" />),
+            choices: [
+              {
+                label: "Red",
+                value: "red"
+              },
+              {
+                label: "Blue",
+                value: "blue"
+              }
+            ]
+
+          },
+
+          {
+            qId: 8,
+            type: 'conditional',
+            qt: 'multi-select',
+            fallBack: (<div>Sorry, you don't like pizza</div>),
+            conditions:
+            {
+              question: 'Q5',
+              value: ['pizza']
+            },
+            question: "What is your favorite pizza topping?",
+            children: (<span className="checkmark" />),
+            choices: [
+              {
+                label: "Pepperoni",
+                value: "pepperoni"
+              },
+              {
+                label: "Mushrooms",
+                value: "mushrooms"
+              },
+              {
+                label: "Olives",
+                value: "olives"
+              }
+            ]
           }
         ]}
         onEnd={logEnd}
@@ -112,3 +169,6 @@ function App() {
 }
 
 export default App;
+
+
+

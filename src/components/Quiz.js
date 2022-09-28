@@ -3,6 +3,12 @@ import InputField from "./InputField";
 import MultiSelect from "./MultiSelect";
 import SingleChoice from "./SingleChoice";
 import Interstitial from "./Interstitial";
+import QuestionBasedOnPreviousAnswer from './QuestionBasedOnPreviousAnswer'
+
+// let redColorChoices = [ 'red', 'orange', 'yellow' ]
+// let blueColorChoices = [ 'blue', 'green', 'purple' ]
+// let greenColorChoices = [ 'green', 'yellow', 'orange' ]
+
 
 export default function Quiz(props) {
   const { Qs, As, onEnd } = props
@@ -22,7 +28,7 @@ export default function Quiz(props) {
   }
 
   //multi select
-  const onChangeMultiSelect = (e) => {
+  const onSelections = (e) => {
     const { name, value, checked } = e.target;
     let newAnswers = { ...answers };
     if (checked && !newAnswers[name].includes(value)) {
@@ -34,10 +40,10 @@ export default function Quiz(props) {
   }
 
   //single choice
-  const onChangeSingleChoice = (e) => {
-    const { name, value } = e.target;
-    setAnswers({ ...answers, [name]: value });
-  }
+  // const onChangeSingleChoice = (e) => {
+  //   const { name, value } = e.target;
+  //   setAnswers({ ...answers, [name]: value });
+  // }
 
 
 
@@ -64,9 +70,10 @@ export default function Quiz(props) {
       <form onSubmit={onSubmit}>
         <h2>{question.question}</h2>
         {question.type === 'text' && <InputField name={`Q${question.qId}`} onChange={onChange} />}
-        {question.type === 'multi-select' && <MultiSelect name={`Q${question.qId}`} choices={question.choices} onChange={onChangeMultiSelect} children={question.children ? question.children : null} />}
+        {question.type === 'multi-select' && <MultiSelect name={`Q${question.qId}`} choices={question.choices} onChange={onSelections} children={question.children ? question.children : null} />}
         {question.type === 'interstitial' && <Interstitial children={question.component} />}
-        {question.type === 'single-choice' && <SingleChoice name={`Q${question.qId}`} choices={question.choices} onChange={onChangeSingleChoice} children={question.children ? question.children : null} />}
+        {question.type === 'single-choice' && <SingleChoice name={`Q${question.qId}`} choices={question.choices} onChange={onSelections} children={question.children ? question.children : null} />}
+        {question.type === 'conditional' && <QuestionBasedOnPreviousAnswer fallBack={question.fallBack} type={question.qt} conditions={question.conditions} previousAnswers={answers} handleChange={onSelections} id={`Q${question.qId}`} choices={question.choices} children={question.children} />}
         <button type="submit">Next</button>
         <button onClick={onBack}>Back</button>
         {currentStep === steps && <div>{JSON.stringify(answers)}</div>}
@@ -75,4 +82,6 @@ export default function Quiz(props) {
     </div>
   )
 }
+
+
 

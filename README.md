@@ -7,6 +7,7 @@
 - Interstitial Component
 - SingleChoice Component
 - MultiSelect Component
+- QuestionBasedOnPreviousAnswer Component
 
 Quiz needs 3 props:
 As and Qs, and onEnd
@@ -118,6 +119,33 @@ Example from above continued with a six part quiz with Q4 being an Interstitial:
         },
       ],
     },
+    {
+      qId: 7,
+      type: 'conditional',
+      qt: 'multi-select',
+      fallBack: (<div>Sorry, you don't like pizza</div>),
+      conditions:
+      {
+        question: 'Q5',
+        value: ['pizza']
+      },
+      question: "What is your favorite pizza topping?",
+      children: (<span className="checkmark" />),
+      choices: [
+        {
+          label: "Pepperoni",
+          value: "pepperoni"
+        },
+        {
+          label: "Mushrooms",
+          value: "mushrooms"
+        },
+        {
+          label: "Olives",
+          value: "olives"
+        }
+      ]
+    }
   ]}
   onEnd={logEnd}
 />
