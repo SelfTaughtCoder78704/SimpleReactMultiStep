@@ -25,7 +25,7 @@ function App() {
           Q1: "",
           Q2: "",
           Q3: [],
-          Q5: [],
+          Q5: '',
           Q6: [],
           Q7: [],
           Q8: []
@@ -142,7 +142,7 @@ function App() {
             conditions:
             {
               question: 'Q5',
-              value: ['pizza']
+              value: 'pizza'
             },
             question: "What is your favorite pizza topping?",
             children: (<span className="checkmark" />),
