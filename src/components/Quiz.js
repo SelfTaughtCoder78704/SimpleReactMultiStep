@@ -51,22 +51,21 @@ export default function Quiz(props) {
     }
   }
 
-  const onBack = (e) => {
-    e.preventDefault();
-    if (currentStep > 1) {
-      setCurrentStep(currentStep - 1);
-      // reset the answer for the current question
-      // make sure to check if is a string or an array
-      // const question = Qs.find((q) => q.qId === currentStep - 1);
-      // if (question.qt === 'multi-select') {
-      //   setAnswers({ ...answers, [`Q${question.qId}`]: [] });
-      // }
-      // if (question.qt === 'single-choice') {
-      //   setAnswers({ ...answers, [`Q${question.qId}`]: '' });
-      // }
+  // const onBack = (e) => {
+  //   e.preventDefault();
+  //   if (currentStep > 1) {
+  //     setCurrentStep(currentStep - 1);
 
-    }
-  }
+  //     const question = Qs.find((q) => q.qId === currentStep - 1);
+  //     if (question.qt === 'multi-select') {
+  //       setAnswers({ ...answers, [`Q${question.qId}`]: [] });
+  //     }
+  //     if (question.qt === 'single-choice') {
+  //       setAnswers({ ...answers, [`Q${question.qId}`]: '' });
+  //     }
+
+  //   }
+  // }
 
   const question = Qs.find((q) => q.qId === currentStep);
 
